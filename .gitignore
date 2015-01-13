@@ -1,0 +1,10 @@
+.*.swp
+*.pyc
+.DS_store
+*.xls
+/dist
+/MANIFEST
+/PKG-INFO
+/register.egg-info
+/*.xlsx
+/*.h

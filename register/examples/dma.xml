@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<block>
+    <name>DMA</name>
+    <base_address>0x60050000</base_address>
+    <!-- Address should be hexa format begins with '0x' -->
+    <description>
+        This block transfers data from source address to destination address at
+        amount of given size.
+    </description>
+    <register>
+        <name>DMA_CTL</name><!-- name should contains uppercase and '_' -->
+        <offset>0x0</offset>
+        <por>0x00000000</por><!-- Power on Reset value -->
+        <description>
+            DMA_CTL controlls DMA block's behavior.
+        </description>
+        <bit>
+            <range>31:1</range>
+                <!--
+                     range should be described as verilog array index.
+                     Possible forms are:
+
+                        + x:y   : should be decreasing (x > y)
+                        + z     : should be single value
+
+                    value must not exceed 31 nor below 0.
+                -->
+            <name>reserved</name> 
+                <!--
+                     each bit name should not be long to make beautiful
+                     register description tables 
+                -->
+            <type>-</type>
+                <!--
+                     Availabe types:
+
+                        + rw   : read/write are permitted
+                        + ro   : read only
+                        + rws  : read and write 1 to set the bit
+                        + rwc  : read and write 1 to clear the bit
+                        + -    : only used for reserved field
+                -->
+            <description>-</description>
+        </bit>
+        <bit>
+            <range>0</range>
+            <name>enable</name>
+                <!-- bit name should contains lowercase and '_' -->
+            <type>rw</type>
+            <description>
+                If this value is set to 1, DMA starts its tranfer operation
+                based on dma descriptors.
+            </description>
+        </bit>
+    </register><!-- DMA_CTL -->
+    <register>
+        <name>DMA_IS</name>
+        <offset>0x4</offset>
+        <por>0x00000000</por>
+        <description>DMA's Interrupt Status register</description>
+        <bit>
+            <range>31:2</range>
+            <name>reserved</name>
+            <type>-</type>
+            <description>-</description>
+        </bit>
+        <bit>
+            <range>1</range>
+            <name>empty</name>
+            <type>rwc</type>
+            <description>If all dma descriptors are consumed, This interrupt
+                bit will be set.</description>
+        </bit>
+        <bit>
+            <range>0</range>
+            <name>tr_done</name>
+            <type>rwc</type>
+            <description>If a dma descriptor is done its data transfer, this
+                interrupt will be set by dma block.</description>
+        </bit>
+    </register><!-- DMA_IS -->
+    <register>
+        <name>DMA_IE</name>
+        <offset>0x8</offset>
+        <por>0x00000000</por>
+        <description>DMA's interrupt enable register</description>
+        <bit>
+            <range>31:2</range>
+            <name>reserved</name>
+            <type>-</type>
+            <description>-</description>
+        </bit>
+        <bit>
+            <range>1</range>
+            <name>empty</name>
+            <type>rw</type>
+            <description>enable/disable empty interrupt</description>
+        </bit>
+        <bit>
+            <range>0</range>
+            <name>tr_done</name>
+            <type>rw</type>
+            <description>enable/disable of transfer descriptor done interrupt.
+            </description>
+        </bit>
+    </register><!-- DMA_IE -->
+    <register>
+        <name>DMA_TST1</name>
+        <offset>0xC</offset>
+        <por>0x1234BEEF</por>
+        <description>Examples of Register Description</description>
+        <bit>
+            <range>31</range>
+            <name>Reserved</name>
+            <type>-</type>
+            <description>-</description>
+        </bit>
+        <bit>
+            <range>30</range>
+            <name>tst1</name>
+            <type>ro</type>
+            <description>tst1 bit field</description>
+        </bit>
+        <bit>
+            <range>29:17</range>
+            <name>tst2</name>
+            <type>rwc</type>
+            <description>tst2 bit field</description>
+        </bit>
+        <bit>
+            <range>16:10</range>
+            <name>tst3</name>
+            <type>rws</type>
+            <description>tst3 bit field description</description>
+        </bit>
+        <bit>
+            <range>9:0</range>
+            <name>reserved</name>
+            <type>-</type>
+            <description>-</description>
+        </bit>
+    </register>
+    <register>
+        <name>DMA_TST2</name>
+        <offset>0x14</offset>
+        <por>0xDEADBEEF</por>
+        <description>Offset is not continuous</description>
+        <bit>
+            <range>31:0</range>
+            <name>dma_tst2</name>
+            <type>rw</type>
+            <description>whole register bit field</description>
+        </bit>
+    </register>
+</block>

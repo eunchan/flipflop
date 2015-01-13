@@ -1,0 +1,103 @@
+\documentclass[10pt,letterpaper]{extbook}
+
+\usepackage[head=26pt, includeheadfoot, top=1.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{import} % for relative import
+\usepackage{calc}
+\usepackage{hyperref}
+\usepackage{color,colortbl,graphicx}
+\usepackage{fancyvrb}
+
+%%%% Define Header Footer w/ FancyHdr %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr,etoolbox, xcolor}
+\definecolor{midnightblue}{rgb}{0.05,0.05,0.4}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\fontsize{8}{10} \selectfont \leftmark}
+    \fancyhead[R]{\fontsize{8}{10} \selectfont \rightmark}
+    \fancyhead[C]{\rule[-4ex]{0pt}{4ex}}
+    \fancyfoot[L]{\fontsize{8}{10} \selectfont Copyleft}
+    \fancyfoot[C]{\fontsize{8}{10} \selectfont - \thepage\ -}
+    \fancyfoot[R]{\fontsize{8}{10} \selectfont $author$ / $team$}
+    }
+\pagestyle{plain}
+
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\renewcommand{\headrulewidth}{1.2pt}
+\renewcommand{\footrulewidth}{1.2pt}
+\newcommand{\headrulecolor}[1]{\patchcmd{\headrule}{\hrule}{\color{#1}\hrule}{}{}}
+\newcommand{\footrulecolor}[1]{\patchcmd{\footrule}{\hrule}{\color{#1}\hrule}{}{}}
+\headrulecolor{midnightblue}
+\footrulecolor{midnightblue}
+%=== End of Header/Footer Definition ========================================%
+
+%%%% Definition of Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ltablex,tabu,multirow,array,booktabs,calc}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\tabulinesep=1.1mm
+\usepackage{setspace}
+\onehalfspace
+%=== End of Table Definition ================================================%
+
+%%%% Definition of Title Page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\maketitle}{\begin{titlepage} % Create command for title page
+    \thispagestyle{empty}
+    \raggedleft % right align for all text
+    \vspace*{\baselineskip} % Whitespace at the top of the page
+    
+    %{\Large \includegraphics[width=3cm]{./tpl/logo.png}}\\[0.167\textheight]
+    {\Large Your Logo }\\[0.167\textheight] % Logo
+
+    {\textcolor{midnightblue}{\Huge Main Title}}\\[\baselineskip]
+
+    {\LARGE\bfseries Subtitle. Manual Template by Eunchan Kim}\\[\baselineskip]
+
+    {\Large \textit{$date$}}\par
+
+    \vfill
+
+    {\large $author$ / $team$}\par
+
+    \vspace*{3\baselineskip}
+    \pagebreak
+    \end{titlepage}
+    }
+%=== End of Title Definition ================================================%
+
+%%%% Table of Contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tocloft}
+
+\setlength\cftparskip{-5pt}
+\setlength\cftbeforechapskip{10pt}
+\renewcommand{\cfttoctitlefont}{\color{midnightblue}\LARGE\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{20pt}
+\setlength{\cftaftertoctitleskip}{10pt}
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\renewcommand{\cftloftitlefont}{\color{midnightblue}\LARGE\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\setlength{\cftbeforeloftitleskip}{20pt}
+\setlength{\cftafterloftitleskip}{10pt}
+\renewcommand{\cftlottitlefont}{\color{midnightblue}\LARGE\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\setlength{\cftbeforelottitleskip}{20pt}
+\setlength{\cftafterlottitleskip}{10pt}
+
+%=== End of Table of Contents ===============================================%
+
+\begin{document}
+\maketitle
+
+
+%subimport
+\chapter{Chapter One}
+\section{Section One}
+\subsection{Register Description}
+\subimport{./}{reg-item}
+\pagebreak
+\subimport{./}{reg-item}
+
+\end{document}
+

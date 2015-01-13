@@ -1,0 +1,33 @@
+\textbf{[FSM\_CMD]} \\
+by writing blah blash.
+
+\hspace{10pt}
+
+\begin{tabular}{>{\bfseries}l l}
+    Offset: & 0x0000 \\
+    POR:    & 0x0000\_0000 \\
+\end{tabular}
+
+\begin{longtabu} to \textwidth {*{16}{|Y}|}
+\hline
+31 & 30 & 29 & 28 & 27 & 26 & 25 & 24 & 23 & 22 & 21 & 20 & 19 & 18 & 17 & 16 \\\hline
+\multicolumn{16}{|c|}{Reserved} \\\hline
+\multicolumn{16}{c}{ } \\
+\hline
+15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 &  3 &  2 &  1 &  0 \\\hline
+\multicolumn{13}{|c|}{Reserved} & crst & \rotatebox{90}{stdone} & \rotatebox{90}{cominit} \\\hline
+\end{longtabu}
+
+
+
+\begin{longtabu} to \textwidth {|c|c|c|X|}
+\hline
+Bit & Name & Access & Description \\
+\hline
+\endhead\relax
+[31:3] & Reserved & - & - \\\hline
+[2] & hrdone & RWS & IF FSM's state is in.. \\\hline
+[1] & stdone & RWS & blah blah \\\hline
+[0] & cominit & RWS & blasblash \\ \hline
+\end{longtabu}
+
